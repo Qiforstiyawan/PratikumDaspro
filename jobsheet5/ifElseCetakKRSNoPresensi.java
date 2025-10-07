@@ -1,12 +1,12 @@
 import java.util.Scanner;
 
-public class switchCetakKRSNoPresensi {
+public class ifElseCetakKRSNoPresensi {
     public static void main(String[] args) {
         
         Scanner sc = new Scanner(System.in);
 
         System.out.println("--- Cetak KRS Siakad ---");
-        System.out.print("Masukkan semester tahun ini: ");
+        System.out.println("Masukkan semester tahun ini: ");
         int semester = sc.nextInt();
 
         if (semester == 1) {
@@ -28,6 +28,6 @@ public class switchCetakKRSNoPresensi {
         } else {
             System.out.println("Semester tidak valid");
         }
-        sc.close();
+    sc.close();
     }
 }
