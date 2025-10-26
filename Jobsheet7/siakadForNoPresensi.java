@@ -22,7 +22,7 @@ public class siakadForNoPresensi {
 
         sc.close();
 
-        System.out.println("Nilai teringgi: " + tertinggi);
+        System.out.println("Nilai tertinggi: " + tertinggi);
         System.out.println("Nilai terendadah: " + terendah);
     }
 }
