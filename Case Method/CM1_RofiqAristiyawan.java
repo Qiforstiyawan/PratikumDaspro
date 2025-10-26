@@ -10,6 +10,8 @@ public class CM1_RofiqAristiyawan {
         String nama, nim, prodi, kelas, statusMatkulAP, statusMatkulSD, statusSemester, nilaiHurufAP, nilaiHurufSD,
                 nilaiAkhirLimitAP, nilaiAkhirLimitSD, rataRataLimit, nilaiUtsLimitAP, nilaiUasLimitAP, nilaiTugasLimitAP,
                 nilaiUtsLimitSD, nilaiUasLimitSD, nilaiTugasLimitSD;
+        double nilaiUtsM, nilaiUasM, nilaiTugasM, nilaiAkhirM, rataRataSD, rataRataAP, rataRataM;
+        String nilaiHurufM, statusMatkulM, rataRataTerbesar, rataRataTerbesarLimit, rataRataAPLimit, rataRataMLimit, rataRataSDLimit, nilaiUtsLimitM, nilaiUasLimitM, nilaiTugasLimitM, nilaiAkhirLimitM;
 
         // input data mahasiswa//
         System.out.println("==== INPUT DATA MAHASISWA ====");
@@ -40,11 +42,21 @@ public class CM1_RofiqAristiyawan {
         System.out.print("Nilai Tugas\t: ");
         nilaiTugasSD = input.nextDouble();
 
+        // input nilai mata kuliah//
+        System.out.println("\n--- Mata Kuliah 3: Matematika ---");
+        System.out.print("Niali UTS\t: ");
+        nilaiUtsM = input.nextDouble();
+        System.out.print("Nilai UAS\t: ");
+        nilaiUasM = input.nextDouble();
+        System.out.print("Nilai Tugas\t: ");
+        nilaiTugasM = input.nextDouble();
+
         input.close();
 
         // proses hitung nilai akhir//
         nilaiAkhirAP = (nilaiUtsAP * 0.3) + (nilaiUasAP * 0.4) + (nilaiTugasAP * 0.3);
         nilaiAkhirSD = (nilaiUtsSD * 0.3) + (nilaiUasSD * 0.4) + (nilaiTugasSD * 0.3);
+        nilaiAkhirM = (nilaiUtsM * 0.3) + (nilaiUasM * 0.4) + (nilaiTugasM * 0.3);
 
         // proses lulus mata kuliah//
         if (nilaiAkhirAP >= 60 && nilaiAkhirAP <= 100) {
@@ -61,6 +73,14 @@ public class CM1_RofiqAristiyawan {
             statusMatkulSD = "Tidak Lulus";
         } else {
             statusMatkulSD = "ERROR";
+        }
+
+        if (nilaiAkhirM >= 60 && nilaiAkhirM <= 100) {
+            statusMatkulM = "Lulus Mata Kuliah";
+        } else if (nilaiAkhirM >= 0 && nilaiAkhirM < 60) {
+            statusMatkulM = "Tidak Lulus";
+        } else {
+            statusMatkulM = "ERROR";
         }
 
         // proses nilai huruf//
@@ -100,11 +120,32 @@ public class CM1_RofiqAristiyawan {
             nilaiHurufSD = "ERROR";
         }
 
+        if (nilaiAkhirM > 80 && nilaiAkhirM <= 100) {
+            nilaiHurufM = "A";
+        } else if (nilaiAkhirM > 73 && nilaiAkhirM <= 80) {
+            nilaiHurufM = "B+";
+        } else if (nilaiAkhirM > 65 && nilaiAkhirM <= 73) {
+            nilaiHurufM = "B";
+        } else if (nilaiAkhirM > 60 && nilaiAkhirM <= 65) {
+            nilaiHurufM = "C+";
+        } else if (nilaiAkhirM > 50 && nilaiAkhirM <= 60) {
+            nilaiHurufM = "C";
+        } else if (nilaiAkhirM > 39 && nilaiAkhirM <= 50) {
+            nilaiHurufM = "D";
+        } else if (nilaiAkhirM >= 0 && nilaiAkhirM <= 39) {
+            nilaiHurufM = "E";
+        } else {
+            nilaiHurufM = "ERROR";
+        }
+
         // rata-rata nilai//
-        rataRata = (nilaiAkhirAP + nilaiAkhirSD) / 2;
+        rataRata = (nilaiAkhirAP + nilaiAkhirSD + nilaiAkhirM) / 3;
+        rataRataSD = (nilaiUtsSD + nilaiUasSD + nilaiTugasSD) / 3;
+        rataRataAP = (nilaiUtsAP + nilaiUasAP + nilaiTugasAP) / 3;
+        rataRataM = (nilaiUtsM + nilaiUasM + nilaiTugasM) / 3;
 
         // proses Status kelulusan semester//
-        if (statusMatkulAP.equals("Lulus Mata Kuliah") && statusMatkulSD.equals("Lulus Mata Kuliah")) {
+        if (statusMatkulAP.equals("Lulus Mata Kuliah") && statusMatkulSD.equals("Lulus Mata Kuliah" ) && statusMatkulM.equals("Lulus Mata Kuliah" )) {
             if (rataRata >= 70) {
                 statusSemester = "Lulus";
             } else {
@@ -114,7 +155,14 @@ public class CM1_RofiqAristiyawan {
             statusSemester = "Tidak Lulus";
         }
 
-        // pembatas nilai//
+        // nilai rata-rata tertinggi //
+        if (rataRataAP > rataRataSD && rataRataAP > rataRataM) {
+            rataRataTerbesar = "materi kuliah Algoritma Pemograman =" + rataRataAP;
+        } else if (rataRataSD > rataRataAP && rataRataSD > rataRataM) {
+            rataRataTerbesar = "materi kuliah Struktur Data =" + rataRataSD;
+        } else {
+            rataRataTerbesar = "materi Kuliah matematika =" + rataRataM;
+        } 
 
         // limit belakang koma//
         nilaiUtsLimitAP = String.format("%.2f", nilaiUtsAP);
@@ -123,9 +171,19 @@ public class CM1_RofiqAristiyawan {
         nilaiUtsLimitSD = String.format("%.2f", nilaiUtsSD);
         nilaiUasLimitSD = String.format("%.2f", nilaiUasSD);
         nilaiTugasLimitSD = String.format("%.2f", nilaiTugasSD);
+        nilaiUtsLimitM = String.format("%.2f", nilaiUtsM);
+        nilaiUasLimitM = String.format("%.2f", nilaiUasM);
+        nilaiTugasLimitM = String.format("%.2f", nilaiTugasM);
         nilaiAkhirLimitAP = String.format("%.2f", nilaiAkhirAP);
         nilaiAkhirLimitSD = String.format("%.2f", nilaiAkhirSD);
+        nilaiAkhirLimitM = String.format("%.2f", nilaiAkhirM);
         rataRataLimit = String.format("%.2f", rataRata);
+        rataRataAPLimit = String.format("%.2f", rataRataAP);
+        rataRataSDLimit = String.format("%.2f", rataRataSD);
+        rataRataMLimit = String.format("%.2f", rataRataM);
+        rataRataTerbesarLimit = String.format("%.2f", rataRataTerbesar);
+
+        // pembatas nilai// 
 
         // output data mahasiswa dan hasil penilaian akademik//
         System.out.println("\n============== HASIL PENILAIAN AKADEMIK ==============");
@@ -141,7 +199,13 @@ public class CM1_RofiqAristiyawan {
                 + nilaiTugasLimitAP + "\t" + nilaiAkhirLimitAP + "\t\t" + nilaiHurufAP + "\t\t" + statusMatkulAP);
         System.out.println("Struktur Data\t\t:" + nilaiUtsLimitSD + "\t" + nilaiUasLimitSD + "\t" + nilaiTugasLimitSD
                 + "\t" + nilaiAkhirLimitSD + "\t\t" + nilaiHurufSD + "\t\t" + statusMatkulSD);
+        System.out.println("Matematika\t\t:" + nilaiUtsLimitM + "\t" + nilaiUasLimitM + "\t" + nilaiTugasLimitM
+                + "\t" + nilaiAkhirLimitM + "\t\t" + nilaiHurufM + "\t\t" + statusMatkulM);
         System.out.println("Rata-Rata Nilai Akhir\t:" + rataRataLimit);
         System.out.println("Status Semester\t\t:" + statusSemester);
+        System.out.println("Rata-rata nilai AP\t: " + rataRataAPLimit);
+        System.out.println("Rata-rata nilai SD\t: " + rataRataSDLimit);
+        System.out.println("Rata-rata nilai M\t: " + rataRataMLimit);
+        System.out.println("rata rata terbesar\t: " + rataRataTerbesarLimit);
     }
 }
