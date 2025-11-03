@@ -13,10 +13,11 @@ public class TriangleNoPresensi{
         
         while (i <= n) {
             int j = 0;
-            while (j < n) {
+            while (j <= i) {
                 System.out.print("*");
                 j++;
             }
+            System.out.println();
             i++;
         }
     }
