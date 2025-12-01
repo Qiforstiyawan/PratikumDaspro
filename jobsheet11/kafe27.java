@@ -23,7 +23,7 @@ public class kafe27 {
         System.out.print("Masukkan jumlah porsi: ");
         int banyakItem = sc.nextInt();
 
-        int total = hitungTotalHargaNoPresensi(pilihanMenu, banyakItem, "DISKON30");
+        int total = hitungTotalHarga27(pilihanMenu, banyakItem, "DISKON30");
 
         totalKeseluruhan += total;
     }
@@ -61,7 +61,7 @@ public class kafe27 {
         System.out.println("Silakan pilih menu yang Anda inginkan.");
     }
 
-    public static int hitungTotalHargaNoPresensi(int pilihanMenu, int jumlahPesanan, String kodePromo) {
+    public static int hitungTotalHarga27(int pilihanMenu, int jumlahPesanan, String kodePromo) {
     int[] hargaItems = {15000, 20000, 22000, 12000, 10000, 18000};
 
     int totalHarga = hargaItems[pilihanMenu - 1] * jumlahPesanan;
