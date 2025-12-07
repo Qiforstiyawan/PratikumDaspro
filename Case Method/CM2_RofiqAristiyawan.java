@@ -18,7 +18,7 @@ public class CM2_RofiqAristiyawan {
             System.out.println("=====================================");
             System.out.println("1. Tambah Data Prestasi");
             System.out.println("2. Tampilkan Semua Prestasi");
-            System.out.println("3. Analisis Prestasi Berdasarkan Jenis");
+            System.out.println("3. Analisis Prestasi Berdasarkan Tahun");
             System.out.println("4. Hitung Jumlah Prestasi per Tingkat");
             System.out.println("5. Keluar");
             System.out.print("Pilih Menu: ");
@@ -30,7 +30,7 @@ public class CM2_RofiqAristiyawan {
                     break;
                 case 2: tampilkanSemua();
                     break;
-                case 3: cariJenis();
+                case 3: mencariTahun();
                     break;
                 case 4: hitungTingkat();
                     break;
@@ -110,10 +110,10 @@ public class CM2_RofiqAristiyawan {
     }
 
     //mencari jenis
-    public static void cariJenis() {
+    public static void mencariTahun() {
         Scanner sc = new Scanner(System.in);
 
-        System.out.print("Masukkan jenis prestasi yang dicari: ");
+        System.out.print("Masukkan taun prestasi yang dicari: ");
         String target = sc.nextLine();
 
         boolean ditemukan = false;
@@ -121,12 +121,12 @@ public class CM2_RofiqAristiyawan {
         System.out.println("=== Hasil pencarian tahun: " + target + " ===");
 
         for (int i = 0; i < jumlahData; i++) {
-            if (data[i][2].equalsIgnoreCase(target)) {
+            if (data[i][4].equalsIgnoreCase(target)) {
                 ditemukan = true;
                 System.out.println("Nama\t\t: " + data[i][0]);
                 System.out.println("NIM\t\t: " + data[i][1]);
                 System.out.println("Jenis Prestasi\t: " + data[i][2]);
-                System.out.println("Tingkat Prestasi\t: " + data[i][3]);
+                System.out.println("Tingkat Prestasi: " + data[i][3]);
                 System.out.println("Tahun Prestasi\t: " + data[i][4]);
                 System.out.println("----------------------------");
             }
@@ -146,7 +146,7 @@ public class CM2_RofiqAristiyawan {
                 case "Lokal":
                     lokal++;
                         break;
-                case "Nasilonal":
+                case "Nasional":
                     nasional++;
                         break;
                 case "Internasional":
