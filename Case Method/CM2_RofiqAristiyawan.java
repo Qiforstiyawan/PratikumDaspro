@@ -118,7 +118,7 @@ public class CM2_RofiqAristiyawan {
 
         boolean ditemukan = false;
 
-        System.out.println("=== Hasil pencarian jenis: " + target + " ===");
+        System.out.println("=== Hasil pencarian tahun: " + target + " ===");
 
         for (int i = 0; i < jumlahData; i++) {
             if (data[i][2].equalsIgnoreCase(target)) {
@@ -133,7 +133,7 @@ public class CM2_RofiqAristiyawan {
         }
 
         if (!ditemukan) {
-            System.out.println("Tidak ada data prestasi dengan jenis tersebut.");
+            System.out.println("Tidak ada data prestasi dengan tahun tersebut.");
         }
     }
 
