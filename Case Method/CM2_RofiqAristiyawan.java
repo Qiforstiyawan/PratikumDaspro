@@ -30,7 +30,7 @@ public class CM2_RofiqAristiyawan {
                     break;
                 case 2: tampilkanSemua();
                     break;
-                case 3: mencariTahun();
+                case 3: mencariData();
                     break;
                 case 4: hitungTingkat();
                     break;
@@ -110,10 +110,10 @@ public class CM2_RofiqAristiyawan {
     }
 
     //mencari jenis
-    public static void mencariTahun() {
+    public static void mencariData() {
         Scanner sc = new Scanner(System.in);
 
-        System.out.print("Masukkan taun prestasi yang dicari: ");
+        System.out.print("Masukkan tahun prestasi yang dicari: ");
         String target = sc.nextLine();
 
         boolean ditemukan = false;
