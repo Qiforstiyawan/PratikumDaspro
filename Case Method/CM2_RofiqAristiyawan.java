@@ -116,7 +116,7 @@ public class CM2_RofiqAristiyawan {
         System.out.print("Masukkan tahun prestasi yang dicari: ");
         String target = sc.nextLine();
 
-        boolean ditemukan = true;
+        boolean ditemukan = false;
 
         System.out.println("=== Hasil pencarian tahun: " + target + " ===");
 
