@@ -169,12 +169,6 @@ public class CM2_RofiqAristiyawan {
         if (jumlahData >= data.length) {
             String[][] baru = new String[data.length * 2][5];
 
-        for (int i = 0; i < data.length; i++) {
-            for (int j = 0; j < 5; j++) {
-                baru[i][j] = data[i][j];
-            }
-        }
-
         data = baru;
         }
     }
