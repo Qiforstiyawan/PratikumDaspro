@@ -101,11 +101,11 @@ public class CM2_RofiqAristiyawan {
         for (int i = 0; i < jumlahData; i++) {
             System.out.println("Data ke-" + (i + 1));
             System.out.println("Nama\t\t: " + data[i][0]);
-            System.out.println("NIM\t\t: " + data[i][0]);
-            System.out.println("Jenis Prestasi\t: " + data[i][0]);
-            System.out.println("Tingkat Prestasi: " + data[i][0]);
-            System.out.println("Tahun Prestasi\t: " + data[i][0]);
-            System.out.println("------------------------" + data[i][0]);
+            System.out.println("NIM\t\t: " + data[i][1]);
+            System.out.println("Jenis Prestasi\t: " + data[i][2]);
+            System.out.println("Tingkat Prestasi: " + data[i][3]);
+            System.out.println("Tahun Prestasi\t: " + data[i][4]);
+            System.out.println("----------------------------");
         }
     }
 
