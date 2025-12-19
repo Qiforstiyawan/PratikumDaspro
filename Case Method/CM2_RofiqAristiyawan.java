@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class CM2_RofiqAristiyawan {
 
-    //jumlah data
+    // jumlah data
     static String[][] data = new String[5][5];
     static int jumlahData = 0;
 
@@ -26,23 +26,29 @@ public class CM2_RofiqAristiyawan {
             sc.nextLine();
 
             switch (pilihMenu) {
-                case 1: tambahData();
+                case 1:
+                    tambahData();
                     break;
-                case 2: tampilkanSemua();
+                case 2:
+                    tampilkanSemua();
                     break;
-                case 3: mencariData();
+                case 3:
+                    mencariData();
                     break;
-                case 4: hitungTingkat();
+                case 4:
+                    hitungTingkat();
                     break;
-                case 5: jalan = false;
+                case 5:
+                    jalan = false;
                     break;
-                default: System.out.println("Pilihan tidak valid");
+                default:
+                    System.out.println("Pilihan tidak valid");
             }
         }
         System.out.println("Selesai.");
     }
 
-    //menambahkan data
+    // menambahkan data
     public static void tambahData() {
         Scanner sc = new Scanner(System.in);
 
@@ -53,8 +59,29 @@ public class CM2_RofiqAristiyawan {
         System.out.println("=== Input Data Prestasi ===");
         System.out.print("Nama\t\t: ");
         nama = sc.nextLine();
-        System.out.print("NIM\t\t: ");
-        nim = sc.nextLine();
+
+        // validasi nim
+        while (true) {
+            System.out.print("NIM\t\t: ");
+            nim = sc.nextLine();
+
+            boolean sudahAda = false;
+
+            // mengecek sudah dipakai atau belum
+            for (int i = 0; i < jumlahData; i++) {
+                if (data[i][1].equalsIgnoreCase(nim)) {
+                    sudahAda = true;
+                    break;
+                }
+            }
+
+            if (!sudahAda) {
+                break;
+            } else {
+                System.out.println("NIM sudah terdaftar! Masukkan NIM lain.");
+            }
+        }
+
         System.out.print("Jenis Prestasi\t: ");
         jenis = sc.nextLine();
 
@@ -63,12 +90,12 @@ public class CM2_RofiqAristiyawan {
             tingkat = sc.nextLine();
 
             if (tingkat.equalsIgnoreCase("Lokal") ||
-            tingkat.equalsIgnoreCase("Nasional") ||
-            tingkat.equalsIgnoreCase("Internasional")) {
-            break;
-        }
-        
-        System.out.println("Input tingkat salah! ketikkan sesuai: Lokal/Nasional/Internasional.");
+                    tingkat.equalsIgnoreCase("Nasional") ||
+                    tingkat.equalsIgnoreCase("Internasional")) {
+                break;
+            }
+
+            System.out.println("Input tingkat salah! ketikkan sesuai: Lokal/Nasional/Internasional.");
         }
 
         int tahun = 0;
@@ -76,7 +103,8 @@ public class CM2_RofiqAristiyawan {
             System.out.print("Tahun Prestasi\t: ");
             tahun = sc.nextInt();
 
-            if (tahun >= 2015 && tahun <= 2025) break;
+            if (tahun >= 2015 && tahun <= 2025)
+                break;
             System.out.println("Hanya menerima di tahun 2015 - 2025");
         }
 
@@ -90,13 +118,13 @@ public class CM2_RofiqAristiyawan {
         System.out.println("Data prestasi berhasil ditambahkan.");
     }
 
-    //menampilkan semua
+    // menampilkan semua
     public static void tampilkanSemua() {
         if (jumlahData == 0) {
             System.out.println("Belum ada data prestasi.");
             return;
         }
-        
+
         System.out.println("=== Semua Data Prestasi ===");
         for (int i = 0; i < jumlahData; i++) {
             System.out.println("Data ke-" + (i + 1));
@@ -109,7 +137,7 @@ public class CM2_RofiqAristiyawan {
         }
     }
 
-    //mencari jenis
+    // mencari jenis
     public static void mencariData() {
         Scanner sc = new Scanner(System.in);
 
@@ -137,7 +165,7 @@ public class CM2_RofiqAristiyawan {
         }
     }
 
-    //menghitung jumlah tingkat
+    // menghitung jumlah tingkat
     public static void hitungTingkat() {
         int lokal = 0, nasional = 0, internasional = 0;
 
@@ -145,13 +173,13 @@ public class CM2_RofiqAristiyawan {
             switch (data[i][3]) {
                 case "Lokal":
                     lokal++;
-                        break;
+                    break;
                 case "Nasional":
                     nasional++;
-                        break;
+                    break;
                 case "Internasional":
                     internasional++;
-                        break;
+                    break;
                 default:
                     break;
             }
@@ -163,13 +191,18 @@ public class CM2_RofiqAristiyawan {
         System.out.println("Internasional\t: " + internasional);
     }
 
-    
-    //auto resize array
+    // auto resize array
     public static void kapasitas() {
         if (jumlahData >= data.length) {
             String[][] baru = new String[data.length * 2][5];
 
-        data = baru;
+            for (int i = 0; i < data.length; i++) {
+                for (int j = 0; j < 5; j++) {
+                    baru[i][j] = data[i][j];
+                }
+            }
+            
+            data = baru;
         }
     }
 }
