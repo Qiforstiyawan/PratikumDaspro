@@ -57,8 +57,26 @@ public class CM2_RofiqAristiyawan {
         kapasitas();
 
         System.out.println("=== Input Data Prestasi ===");
-        System.out.print("Nama\t\t: ");
-        nama = sc.nextLine();
+        
+        while (true) {
+            System.out.print("Nama\t\t: ");
+            nama = sc.nextLine();
+
+            boolean sudahAda = false;
+
+            for (int i = 0; i < jumlahData; i++) {
+                if (data[i][0].equalsIgnoreCase(nama)) {
+                    sudahAda = true;
+                    break;
+                }
+            }
+
+            if (!sudahAda) {
+                break;
+            } else {
+                System.out.println("Nama sudah terdaftar!, Masukkan Nama lain.");
+            }
+        }
 
         // validasi nim
         while (true) {
