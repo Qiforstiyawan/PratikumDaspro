@@ -65,7 +65,7 @@ public class CM2_RofiqAristiyawan {
             boolean sudahAda = false;
 
             for (int i = 0; i < jumlahData; i++) {
-                if (data[i][0].equalsIgnoreCase(nama)) {
+                if (data[i][0].equals(nama)) {
                     sudahAda = true;
                     break;
                 }
